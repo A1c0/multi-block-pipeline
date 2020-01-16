@@ -1,22 +1,13 @@
 version: v1.0
-name: Tag based deploy
+name: Initial Pipeline
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
-
 blocks:
-  - name: Build and test
+  - name: 'Block #1'
     task:
       jobs:
-        - commands:
-            - echo Build and test...
-
-promotions:
-  - name: Deploy to prod on tag
-    pipeline_file: prod.yml
-    auto_promote_on:
-      - result: passed
-        label_patterns:
-          - ^refs/tags/v.*-deploy$
-
+        - name: 'Job #1'
+          commands:
+            - checkout
